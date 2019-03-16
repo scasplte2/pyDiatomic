@@ -56,5 +56,5 @@ plt.title("example_RKR.py")
 plt.xlabel(r"R($\AA$)")
 plt.ylabel("E(eV)")
 
-plt.savefig("output/example_RKR.png", dpi=75)
+plt.savefig("output/example_rkr.png", dpi=75)
 plt.show()
