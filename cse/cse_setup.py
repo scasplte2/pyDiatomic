@@ -120,9 +120,11 @@ def potential_energy_curves(pecfs=None, R=None):
         if isinstance(fn, (np.str)):
             radialcoord, potential = np.loadtxt(fn, unpack=True)
             fn = fn.split('/')[-1].upper()
+            # Read angular momentum degeneracy from filename
             digits = re.findall('\d', fn)
             if len(digits) > 0:
                 degen = int(digits[0])
+                print(degen)
                 S = (degen - 1)//2
                 Ω = int(digits[1])
                 Λ = 'SPDF'.index(fn[fn.index(digits[0])+1])
@@ -151,7 +153,7 @@ def potential_energy_curves(pecfs=None, R=None):
     Rm  = max([Rin[i][0]    for i in range(n)])   # highest minimum
     Rx  = min([Rin[i][-1]   for i in range(n)])   # lowest maximum
     Vm  = min([Vin[i].min() for i in range(n)])   # lowest potential energy
-    Vx = min([Vin[i][-1]   for i in range(n)])   # lowest dissociation limit
+    Vx  = min([Vin[i][-1]   for i in range(n)])   # lowest dissociation limit
 
     # common internuclear distance grid, that requires no potential
     # curve is extrapolated

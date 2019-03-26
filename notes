@@ -12,3 +12,8 @@ pip install numpy
 pip install scipy
 pip install periodictable
 pip install matplotlib
+
+# When adding your own curves, you can specify the angular momentum degeneracy in the file
+# The format to do this is not obvious
+
+# For specifying isotopes use 86Sr 
