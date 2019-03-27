@@ -139,6 +139,7 @@ def potential_energy_curves(pecfs=None, R=None):
 
         if potential[-1] > 100:
             potential /= 8065.541   # convert cm-1 to eV
+            #potential /=  3.33564*10**(-2)   # convert cm-1 to GHz
 
         Rin.append(radialcoord)
         Vin.append(potential)
@@ -217,7 +218,9 @@ def coupling_function(R, VT, μ, pecfs, coup=None):
                 couple = coup[cnt]
                 cnt += 1
 
-            VT[j, k] = VT[k, j] = coupling_function*couple/8065.541
+            eConv = 8065.541   # convert cm-1 to eV
+            #eConv = 3.33564*10**(-2)   # convert cm-1 to GHz
+            VT[j, k] = VT[k, j] = coupling_function*couple/eConv
 
     return VT
 

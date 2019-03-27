@@ -296,7 +296,7 @@ def eigen(energy, rot, mx, V, R, μ, AM):
     RI = RImat(WI, mx)
 
     # | R_mx - R^-1_mx+1 |     x1000 scalinhg helps leeastsquares
-    return linalg.det(linalg.inv(RI[mx])-RI[mx+1])*1000
+    return linalg.det(linalg.inv(RI[mx])-RI[mx+1])*10**6
 
 
 def normalize(wf, R):

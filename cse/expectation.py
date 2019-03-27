@@ -79,7 +79,10 @@ def xs(Xs, wavenumber):
     """ solve CSE of upper coupled states for the transition energy.
 
     """
-    dE = wavenumber/8065.541  # convert to eV
+    eConv = 8065.541   # convert cm-1 to eV
+    #eConv = 3.33564*10**(-2)   # convert cm-1 to GHz
+
+    dE = wavenumber/eConv
     en = Xs.gs.energy + dE
     Xs.us.solve(en)
     if Xs.us.openchann.size == 1 and Xs.us.openchann == 0:
