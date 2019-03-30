@@ -124,7 +124,6 @@ def potential_energy_curves(pecfs=None, R=None):
             digits = re.findall('\d', fn)
             if len(digits) > 0:
                 degen = int(digits[0])
-                print(degen)
                 S = (degen - 1)//2
                 Ω = int(digits[1])
                 Λ = 'SPDF'.index(fn[fn.index(digits[0])+1])
@@ -162,6 +161,9 @@ def potential_energy_curves(pecfs=None, R=None):
         dR = Rin[0][-1] - Rin[0][-2]
         dR = round(dR, 1-int(np.floor(np.log10(dR)))-1)
         R = np.arange(Rm, Rx+dR/2, dR)
+    # Added this line to override the None case above. 
+    # I am unsure why we is forcing rounding but maybe it will mess up the computation
+    #R = Rin[0]
 
     oo = len(R)
 
