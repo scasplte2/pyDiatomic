@@ -163,7 +163,7 @@ def potential_energy_curves(pecfs=None, R=None):
         R = np.arange(Rm, Rx+dR/2, dR)
     # Added this line to override the None case above. 
     # I am unsure why we is forcing rounding but maybe it will mess up the computation
-    #R = Rin[0]
+    R = Rin[0]
 
     oo = len(R)
 
