@@ -1,9 +1,8 @@
 PyDiatomic README
 =================
 
-.. image:: https://travis-ci.com/stggh/PyDiatomic.svg?branch=master
-    :target: https://travis-ci.com/stggh/PyDiatomic
-
+This is a fork of the original project available at https://github.com/stggh/PyDiatomic
+Here I have targeted calculations towards ultracold strontium-86. The most substantive change is the inclusion of JuPyter notebooks under the /examples directory.
 
 Introduction
 ------------
