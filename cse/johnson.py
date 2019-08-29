@@ -51,7 +51,7 @@ def WImat(energy, rot, V, R, μ, AM):
     # 2μ/hbar^2 x \DeltaR^2/12 x e
     factor = μ*1.0e-20*dR2*const.e/const.hbar/const.hbar/6
 
-    # hbar^2/2μ x e x 10^20
+    # hbar^2/2μ x e x 10^20 (1e20 is for converting meters to Angstroms and multiply by e puts energy into eV)
     centrifugal_factor = (const.hbar*1.0e20/μ/2/const.e)*const.hbar
 
     oo, n, m = V.shape
@@ -74,9 +74,10 @@ def WImat(energy, rot, V, R, μ, AM):
                 if Ω != Ωk:
                     # L-uncoupling, homogeneous coupling already set
                     if Jp1 > Ω*Ωk:
-                        barrier[j, k, :] = barrier[k, j, :] = 8064.541*\
-                              V[:, j, k]*np.sqrt(Jp1 - Ω*Ωk)*\
-                              centrifugal_factor/R[:]**2
+                        # barrier[j, k, :] = barrier[k, j, :] = 8064.541*\
+                        #       V[:, j, k]*np.sqrt(Jp1 - Ω*Ωk)*\
+                        #       centrifugal_factor/R[:]**2
+                        barrier[j, k, :] = barrier[k, j, :] = -np.sqrt(4*Jp1)*centrifugal_factor/R[:]**2
                                    
     barrier = barrier.T
 
@@ -296,7 +297,7 @@ def eigen(energy, rot, mx, V, R, μ, AM):
     RI = RImat(WI, mx)
 
     # | R_mx - R^-1_mx+1 |     x1000 scalinhg helps leeastsquares
-    return linalg.det(linalg.inv(RI[mx])-RI[mx+1])*1000
+    return linalg.det(linalg.inv(RI[mx])-RI[mx+1])*10**6
 
 
 def normalize(wf, R):

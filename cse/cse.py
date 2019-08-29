@@ -74,7 +74,10 @@ class Cse():
     def __init__(self, μ=None, R=None, VT=None, coup=None, eigenbound=None,
                  rot=0, en=0):
 
-        self._evcm = 8065.541
+        eConv = 8065.541   # convert cm-1 to eV
+        #eConv = 3.33564*10**(-2)   # convert cm-1 to GHz
+
+        self._evcm = eConv
         self.set_μ(μ=μ)
         self.rot = rot
 
@@ -256,7 +259,7 @@ class Cse():
             vib = sorted(list(self.results.keys()))
             for v in vib:
                 about += f'{v:2d}  {self.results[v][3]:2d}   '
-                about += f'{self.results[v][0]:10.3f}     '
+                about += f'{self.results[v][0]:10.6f}     '
                 about += f'{self.results[v][1]:9.5f}'
                 about += f'{self.results[v][2]:15.3e}\n'
         return about
